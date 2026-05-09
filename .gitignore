@@ -19,6 +19,7 @@ bin/
 *.db
 *.db-*
 spray
+/pkg/scanner/resources/template.go
 
 # Generated build and validation artifacts
 /reports/evidence/
