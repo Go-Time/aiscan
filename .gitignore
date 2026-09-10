@@ -61,6 +61,7 @@ web/static-stale/
 /scripts/
 /scan_report.md
 aiscan.yaml
+.runlogs/harness/
 
 # Generated build and validation artifacts
 /reports/evidence/
