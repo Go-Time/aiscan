@@ -73,6 +73,12 @@ cyber.yaml
 aiscan.yaml
 .runlogs/harness/
 
+# Local JEV experiments and browser replay output
+/output/
+/exts/jev/output/
+/.runlogs/
+/exts/jev/.runlogs/
+
 # Generated build and validation artifacts
 /reports/evidence/
 /docs/evidence/

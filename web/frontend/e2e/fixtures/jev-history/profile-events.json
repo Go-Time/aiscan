@@ -1,0 +1,2472 @@
+[
+  {
+    "event": {
+      "id": "synthetic-identity-0602",
+      "emittedAt": "2000-01-01T00:02:31Z",
+      "sessionId": "synthetic-identity-0271",
+      "emitter": "synthetic-identity-0178",
+      "seq": "1",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.chat.SessionHistory",
+          "mode": "MODE_INHERIT"
+        }
+      ],
+      "sessionStarted": {
+        "model": "fixture"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0603",
+      "emittedAt": "2000-01-01T00:02:31Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "2",
+      "turnStarted": {}
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0604",
+      "emittedAt": "2000-01-01T00:02:32Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "3",
+      "message": {
+        "id": "synthetic-identity-0263",
+        "role": "user",
+        "content": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0606",
+      "emittedAt": "2000-01-01T00:02:33Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "segmentId": "synthetic-identity-0605",
+        "boundaryId": "d18d5e33704005403b0c8469a257b2393fb5bc252923e11bd1ca72cdf4f8b244",
+        "boundary": {
+          "reason": "no_reflex"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0607",
+      "emittedAt": "2000-01-01T00:02:34Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "4",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.agent.LLMRequestDetail",
+          "model": "fixture",
+          "messages": 2,
+          "maxTokens": 1024,
+          "stream": true
+        }
+      ],
+      "status": {
+        "state": "llm_request"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0609",
+      "emittedAt": "2000-01-01T00:02:34Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "5",
+      "message": {
+        "id": "synthetic-identity-0264",
+        "role": "assistant",
+        "content": [
+          {
+            "toolCall": {
+              "id": "synthetic-identity-0608",
+              "name": "bash",
+              "kind": "function",
+              "arguments": {
+                "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzZXNzaW9ucyJ9",
+                "mediaType": "application/json"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0610",
+      "emittedAt": "2000-01-01T00:02:34Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "6",
+      "toolCall": {
+        "id": "synthetic-identity-0608",
+        "name": "bash",
+        "kind": "function",
+        "arguments": {
+          "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzZXNzaW9ucyJ9",
+          "mediaType": "application/json"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0612",
+      "emittedAt": "2000-01-01T00:02:36Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "7",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0611",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "tool",
+        "name": "bash"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0615",
+      "emittedAt": "2000-01-01T00:02:38Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "2",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0614",
+          "purpose": "jev_claim",
+          "questions": {
+            "claim0": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"defer\":\"Synthetic fixture value 287\",\"new\":\"Synthetic fixture value 288\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0616",
+      "emittedAt": "2000-01-01T00:02:38Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "8",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0613",
+          "parentOperationId": "synthetic-identity-0611",
+          "resourceId": "synthetic-identity-0081",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "process",
+        "name": "playwright sessions"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0618",
+      "emittedAt": "2000-01-01T00:02:38Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "9",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0617",
+          "parentOperationId": "synthetic-identity-0613",
+          "resourceId": "synthetic-identity-0081",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "command",
+        "name": "playwright"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0619",
+      "emittedAt": "2000-01-01T00:02:38Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "10",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0617",
+          "parentOperationId": "synthetic-identity-0613",
+          "resourceId": "synthetic-identity-0081",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "command",
+        "name": "playwright",
+        "startedAt": "2000-01-01T00:02:38Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0620",
+      "emittedAt": "2000-01-01T00:02:39Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "11",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0611",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "tool",
+        "name": "bash",
+        "startedAt": "2000-01-01T00:02:35Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0621",
+      "emittedAt": "2000-01-01T00:02:39Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "12",
+      "toolResult": {
+        "callId": "synthetic-identity-0608",
+        "output": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ],
+        "name": "bash",
+        "durationMs": "50"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0622",
+      "emittedAt": "2000-01-01T00:02:39Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "13",
+      "usage": {
+        "inputTokens": "1000",
+        "outputTokens": "200",
+        "totalTokens": "1200",
+        "model": "fixture",
+        "detail": {
+          "context_tokens": "1000",
+          "requests": "1"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0624",
+      "emittedAt": "2000-01-01T00:02:40Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "3",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0614",
+          "purpose": "jev_claim",
+          "answers": {
+            "claim0": {
+              "type": "choice",
+              "choice": "new"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0625",
+      "emittedAt": "2000-01-01T00:02:41Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "4",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "segmentId": "synthetic-identity-0623",
+        "boundaryId": "f88b5a81d05623cc1070a96f8607c45145a0b0e88d0e956ea651ffa3d1b924d9",
+        "boundary": {
+          "reason": "no_reflex"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0626",
+      "emittedAt": "2000-01-01T00:02:42Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "14",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0608",
+          "operationId": "synthetic-identity-0613",
+          "parentOperationId": "synthetic-identity-0611",
+          "resourceId": "synthetic-identity-0081",
+          "correlation": "CORRELATION_EXPLICIT"
+        },
+        {
+          "@type": "type.googleapis.com/aop.pty.Session",
+          "id": "synthetic-identity-0081",
+          "kind": "builtin",
+          "name": "playwright",
+          "command": "printf synthetic-fixture",
+          "startedAt": "2000-01-01T00:02:37Z",
+          "lastActivityAt": "2000-01-01T00:02:38Z",
+          "endedAt": "2000-01-01T00:02:38Z",
+          "activitySeq": "4",
+          "outputBytes": "50",
+          "state": "completed",
+          "shape": "func"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "process",
+        "name": "playwright sessions",
+        "startedAt": "2000-01-01T00:02:37Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0628",
+      "emittedAt": "2000-01-01T00:02:42Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "5",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "generation": {
+          "kind": "claim_llm",
+          "state": "started",
+          "requestId": "synthetic-identity-0627",
+          "attempt": 1,
+          "requestedEffort": "none"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0629",
+      "emittedAt": "2000-01-01T00:02:43Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "15",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.agent.LLMRequestDetail",
+          "model": "fixture",
+          "messages": 4,
+          "maxTokens": 1024,
+          "stream": true
+        }
+      ],
+      "status": {
+        "state": "llm_request"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0630",
+      "emittedAt": "2000-01-01T00:02:43Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "16",
+      "messageDelta": {
+        "messageId": "synthetic-identity-0265",
+        "operation": "DELTA_OPERATION_APPEND",
+        "text": "Current sessions verified from native evidence."
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0631",
+      "emittedAt": "2000-01-01T00:02:44Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "17",
+      "message": {
+        "id": "synthetic-identity-0265",
+        "role": "assistant",
+        "content": [
+          {
+            "text": {
+              "text": "Current sessions verified from native evidence."
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0632",
+      "emittedAt": "2000-01-01T00:02:45Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "6",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "generation": {
+          "kind": "claim_llm",
+          "state": "finished",
+          "output": "[]",
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200"
+          },
+          "requestId": "synthetic-identity-0627",
+          "attempt": 1,
+          "requestedEffort": "none"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0633",
+      "emittedAt": "2000-01-01T00:02:46Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "18",
+      "usage": {
+        "inputTokens": "1000",
+        "outputTokens": "200",
+        "totalTokens": "1200",
+        "model": "fixture",
+        "detail": {
+          "context_tokens": "1000",
+          "requests": "1"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0634",
+      "emittedAt": "2000-01-01T00:02:47Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0178",
+      "seq": "19",
+      "turnEnded": {
+        "stopReason": "completed",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1"
+          }
+        },
+        "contextTokens": "1000"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0635",
+      "emittedAt": "2000-01-01T00:02:48Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "synthetic-identity-0297",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.agent.Recap",
+        "text": "Synthetic fixture text 291"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0636",
+      "emittedAt": "2000-01-01T00:02:49Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "7",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "libraryChange": {
+          "state": "claim_published",
+          "claim": {
+            "id": "74b2ea2e544edc0f5",
+            "sourceTaskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+            "text": "Synthetic fixture text 292"
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0637",
+      "emittedAt": "2000-01-01T00:02:49Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "8",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "1e33424d6d6f9b66085ada28cfeb3116c3fa93c4e6f468cbf35508988217fbe2",
+        "libraryChange": {
+          "state": "settled"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0639",
+      "emittedAt": "2000-01-01T00:02:50Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "9",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "49836148b3d6e9aa0fe1aae1c3f383be4071fe0c9ae9ea4ae6c1c5e2f6bcbc49",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0638",
+          "purpose": "jev_claim",
+          "questions": {
+            "claim0": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"74b2ea2e544edc0f5\":\"Synthetic fixture value 293\",\"defer\":\"Synthetic fixture value 294\",\"new\":\"Synthetic fixture value 295\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0640",
+      "emittedAt": "2000-01-01T00:02:51Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "10",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "49836148b3d6e9aa0fe1aae1c3f383be4071fe0c9ae9ea4ae6c1c5e2f6bcbc49",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0638",
+          "purpose": "jev_claim",
+          "answers": {
+            "claim0": {
+              "type": "choice",
+              "choice": "74b2ea2e544edc0f5"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0641",
+      "emittedAt": "2000-01-01T00:02:52Z",
+      "sessionId": "synthetic-identity-0271",
+      "turnId": "synthetic-identity-1150",
+      "emitter": "jev",
+      "seq": "11",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "7ad8f4389ce999ebc877bab898e5d5449f939e02e8741ede96a55658185bc4a0",
+        "background": true,
+        "boundaryId": "49836148b3d6e9aa0fe1aae1c3f383be4071fe0c9ae9ea4ae6c1c5e2f6bcbc49",
+        "libraryChange": {
+          "state": "settled"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0642",
+      "emittedAt": "2000-01-01T00:02:53Z",
+      "sessionId": "synthetic-identity-0272",
+      "emitter": "synthetic-identity-0178",
+      "seq": "1",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.chat.SessionHistory",
+          "mode": "MODE_INHERIT"
+        }
+      ],
+      "sessionStarted": {
+        "model": "fixture"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0643",
+      "emittedAt": "2000-01-01T00:02:53Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "2",
+      "turnStarted": {}
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0644",
+      "emittedAt": "2000-01-01T00:02:54Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "3",
+      "message": {
+        "id": "synthetic-identity-0263",
+        "role": "user",
+        "content": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0646",
+      "emittedAt": "2000-01-01T00:02:55Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "segmentId": "synthetic-identity-0645",
+        "boundaryId": "e0703f074d2bec73e18efe1fb8050061483af01a13363add9b5920037523102c",
+        "boundary": {
+          "reason": "no_reflex"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0647",
+      "emittedAt": "2000-01-01T00:02:56Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "4",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.agent.LLMRequestDetail",
+          "model": "fixture",
+          "messages": 2,
+          "maxTokens": 1024,
+          "stream": true
+        }
+      ],
+      "status": {
+        "state": "llm_request"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0649",
+      "emittedAt": "2000-01-01T00:02:56Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "5",
+      "message": {
+        "id": "synthetic-identity-0264",
+        "role": "assistant",
+        "content": [
+          {
+            "toolCall": {
+              "id": "synthetic-identity-0648",
+              "name": "bash",
+              "kind": "function",
+              "arguments": {
+                "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzZXNzaW9ucyJ9",
+                "mediaType": "application/json"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0650",
+      "emittedAt": "2000-01-01T00:02:56Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "6",
+      "toolCall": {
+        "id": "synthetic-identity-0648",
+        "name": "bash",
+        "kind": "function",
+        "arguments": {
+          "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzZXNzaW9ucyJ9",
+          "mediaType": "application/json"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0652",
+      "emittedAt": "2000-01-01T00:02:57Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "7",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0651",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "tool",
+        "name": "bash"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0654",
+      "emittedAt": "2000-01-01T00:02:58Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "8",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0653",
+          "parentOperationId": "synthetic-identity-0651",
+          "resourceId": "synthetic-identity-0078",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "process",
+        "name": "playwright sessions"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0656",
+      "emittedAt": "2000-01-01T00:02:58Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "9",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0655",
+          "parentOperationId": "synthetic-identity-0653",
+          "resourceId": "synthetic-identity-0078",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "command",
+        "name": "playwright"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0657",
+      "emittedAt": "2000-01-01T00:02:58Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "10",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0655",
+          "parentOperationId": "synthetic-identity-0653",
+          "resourceId": "synthetic-identity-0078",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "command",
+        "name": "playwright",
+        "startedAt": "2000-01-01T00:02:58Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0658",
+      "emittedAt": "2000-01-01T00:02:59Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "11",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0651",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "tool",
+        "name": "bash",
+        "startedAt": "2000-01-01T00:02:57Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0659",
+      "emittedAt": "2000-01-01T00:02:59Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "12",
+      "toolResult": {
+        "callId": "synthetic-identity-0648",
+        "output": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ],
+        "name": "bash",
+        "durationMs": "50"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0660",
+      "emittedAt": "2000-01-01T00:02:59Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "13",
+      "usage": {
+        "inputTokens": "1000",
+        "outputTokens": "200",
+        "totalTokens": "1200",
+        "model": "fixture",
+        "detail": {
+          "context_tokens": "1000",
+          "requests": "1"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0662",
+      "emittedAt": "2000-01-01T00:03:00Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "14",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0648",
+          "operationId": "synthetic-identity-0653",
+          "parentOperationId": "synthetic-identity-0651",
+          "resourceId": "synthetic-identity-0078",
+          "correlation": "CORRELATION_EXPLICIT"
+        },
+        {
+          "@type": "type.googleapis.com/aop.pty.Session",
+          "id": "synthetic-identity-0078",
+          "kind": "builtin",
+          "name": "playwright",
+          "command": "printf synthetic-fixture",
+          "startedAt": "2000-01-01T00:02:58Z",
+          "lastActivityAt": "2000-01-01T00:02:58Z",
+          "endedAt": "2000-01-01T00:02:58Z",
+          "activitySeq": "4",
+          "outputBytes": "50",
+          "state": "completed",
+          "shape": "func"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "process",
+        "name": "playwright sessions",
+        "startedAt": "2000-01-01T00:02:58Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0664",
+      "emittedAt": "2000-01-01T00:03:01Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "2",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0663",
+          "purpose": "jev_claim",
+          "questions": {
+            "claim0": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"74b2ea2e544edc0f5\":\"Synthetic fixture value 299\",\"defer\":\"Synthetic fixture value 300\",\"new\":\"Synthetic fixture value 301\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0665",
+      "emittedAt": "2000-01-01T00:03:02Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "3",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "segmentId": "synthetic-identity-0661",
+        "boundaryId": "99e194e6b95d51b0037c43969fc3b012272135a368409a051fb8d2fa0c4443d0",
+        "boundary": {
+          "reason": "no_reflex"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0666",
+      "emittedAt": "2000-01-01T00:03:03Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "15",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.agent.LLMRequestDetail",
+          "model": "fixture",
+          "messages": 4,
+          "maxTokens": 1024,
+          "stream": true
+        }
+      ],
+      "status": {
+        "state": "llm_request"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0668",
+      "emittedAt": "2000-01-01T00:03:03Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "16",
+      "messageDelta": {
+        "messageId": "synthetic-identity-0265",
+        "operation": "DELTA_OPERATION_APPEND",
+        "text": "Current sessions verified from native evidence."
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0669",
+      "emittedAt": "2000-01-01T00:03:03Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "17",
+      "message": {
+        "id": "synthetic-identity-0265",
+        "role": "assistant",
+        "content": [
+          {
+            "text": {
+              "text": "Current sessions verified from native evidence."
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0667",
+      "emittedAt": "2000-01-01T00:03:03Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "4",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0663",
+          "purpose": "jev_claim",
+          "answers": {
+            "claim0": {
+              "type": "choice",
+              "choice": "74b2ea2e544edc0f5"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0670",
+      "emittedAt": "2000-01-01T00:03:04Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "18",
+      "usage": {
+        "inputTokens": "1000",
+        "outputTokens": "200",
+        "totalTokens": "1200",
+        "model": "fixture",
+        "detail": {
+          "context_tokens": "1000",
+          "requests": "1"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0671",
+      "emittedAt": "2000-01-01T00:03:05Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0178",
+      "seq": "19",
+      "turnEnded": {
+        "stopReason": "completed",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1"
+          }
+        },
+        "contextTokens": "1000"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0672",
+      "emittedAt": "2000-01-01T00:03:05Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "synthetic-identity-0297",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.agent.Recap",
+        "text": "Synthetic fixture text 302"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0673",
+      "emittedAt": "2000-01-01T00:03:06Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "5",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "libraryChange": {
+          "state": "compiling"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0675",
+      "emittedAt": "2000-01-01T00:03:07Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "6",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0674",
+          "purpose": "jev_reflex",
+          "questions": {
+            "synthetic-identity-0177": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"synthetic-identity-0177\":\"Synthetic fixture value 303\",\"defer\":\"Synthetic fixture value 304\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0676",
+      "emittedAt": "2000-01-01T00:03:08Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "7",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0674",
+          "purpose": "jev_reflex",
+          "answers": {
+            "synthetic-identity-0177": {
+              "type": "choice",
+              "choice": "synthetic-identity-0177"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0678",
+      "emittedAt": "2000-01-01T00:03:09Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "8",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "reflex_llm",
+          "state": "started",
+          "requestId": "synthetic-identity-0677",
+          "requestedEffort": "none"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0680",
+      "emittedAt": "2000-01-01T00:03:10Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "9",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "compiler_round",
+          "state": "started",
+          "requestId": "synthetic-identity-0679",
+          "attempt": 1,
+          "parentRequestId": "synthetic-identity-0677",
+          "phase": "compilation"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0681",
+      "emittedAt": "2000-01-01T00:03:10Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "10",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "compiler_round",
+          "state": "finished",
+          "output": "[]",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200"
+          },
+          "requestId": "synthetic-identity-0679",
+          "attempt": 1,
+          "parentRequestId": "synthetic-identity-0677",
+          "phase": "compilation"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0682",
+      "emittedAt": "2000-01-01T00:03:10Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "11",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "reflex_llm",
+          "state": "finished",
+          "output": "[]",
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1"
+            }
+          },
+          "requestId": "synthetic-identity-0677",
+          "requestedEffort": "none"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0684",
+      "emittedAt": "2000-01-01T00:03:11Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "12",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "reflex_validation",
+          "state": "started",
+          "requestId": "synthetic-identity-0683",
+          "attempt": 1,
+          "parentRequestId": "synthetic-identity-0677",
+          "phase": "mechanism"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0686",
+      "emittedAt": "2000-01-01T00:03:12Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "13",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0685",
+          "purpose": "jev_reflex",
+          "questions": {
+            "synthetic-identity-0177": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"synthetic-identity-0177\":\"Synthetic fixture value 305\",\"defer\":\"Synthetic fixture value 306\"}"
+            },
+            "coverage0": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"synthetic-identity-0177\":\"Synthetic fixture value 307\",\"defer\":\"Synthetic fixture value 308\"}"
+            },
+            "coverage_freshness": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"synthetic-identity-0177\":\"Synthetic fixture value 309\",\"defer\":\"Synthetic fixture value 310\"}"
+            },
+            "coverage_result": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"synthetic-identity-0177\":\"Synthetic fixture value 311\",\"defer\":\"Synthetic fixture value 312\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0687",
+      "emittedAt": "2000-01-01T00:03:13Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "14",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0685",
+          "purpose": "jev_reflex",
+          "answers": {
+            "synthetic-identity-0177": {
+              "type": "choice",
+              "choice": "synthetic-identity-0177"
+            },
+            "coverage0": {
+              "type": "choice",
+              "choice": "synthetic-identity-0177"
+            },
+            "coverage_freshness": {
+              "type": "choice",
+              "choice": "synthetic-identity-0177"
+            },
+            "coverage_result": {
+              "type": "choice",
+              "choice": "synthetic-identity-0177"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0688",
+      "emittedAt": "2000-01-01T00:03:14Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "15",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "claimId": "74b2ea2e544edc0f5",
+        "generation": {
+          "kind": "reflex_validation",
+          "state": "finished",
+          "output": "[]",
+          "elapsedMs": "50",
+          "requestId": "synthetic-identity-0683",
+          "attempt": 1,
+          "parentRequestId": "synthetic-identity-0677",
+          "phase": "mechanism"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0689",
+      "emittedAt": "2000-01-01T00:03:15Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "16",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "libraryChange": {
+          "state": "reflex_published",
+          "reflex": {
+            "id": "synthetic-identity-0273",
+            "when": "Synthetic fixture when 313",
+            "decide": "Use the synthetic fixture inputs and defer when they are absent.",
+            "observe": "js:function(context, args) {\n  args = args || {};\n  var missing = [];\n  if (!args.url) missing.push(\"url\");\n  if (!args.session) missing.push(\"session\");\n  if (!args.term) missing.push(\"term\");\n  if (!args.input_selector) missing.push(\"input_selector\");\n  if (!args.submit_selector) missing.push(\"submit_selector\");\n  if (missing.length) return {defer: \"missing current arguments\", parameters: \"url, session, term, input_selector, submit_selector\"};\n  var session = args.session;\n  var term = String(args.term);\n  var inSel = String(args.input_selector);\n  var btnSel = String(args.submit_selector);\n  var prefix = (args.receipt_prefix == null) ? \"Receipt: \" : String(args.receipt_prefix);\n\n  function snap(data) {\n    if (!data || !data.elements) return null;\n    return data.elements;\n  }\n  function findIdx(elements) {\n    if (!elements) return -1;\n    for (var i = 0; i < elements.length; i++) {\n      var t = elements[i].text;\n      if (t && t.indexOf(prefix) === 0) return i;\n    }\n    return -1;\n  }\n  function reportFor(elements, hostCall) {\n    var idx = findIdx(elements);\n    if (idx < 0) return null;\n    return {report: {evidence: hostCall, path: [\"data\", \"elements\", idx, \"text\"]}};\n  }\n\n  var hostCall = null;\n  var elements = null;\n  var opened = false;\n  var filled = false;\n  var clicked = false;\n  var anySnapshot = false;\n  var postClickSnapshot = false;\n\n  var hist = context.history || [];\n  for (var h = 0; h < hist.length; h++) {\n    var rec = hist[h];\n    if (rec.name !== \"bash\") continue;\n    var av = (rec.decoded_argv || []).slice();\n    if (av[0] !== \"playwright\") continue;\n    var sub = av[1];\n    if (sub === \"open\" && av[2] === args.url && av.indexOf(\"--session\") >= 0) { opened = true; }\n    if (sub === \"fill\" && av[2] === session && av[3] === inSel && av[4] === term) { filled = true; }\n    if (sub === \"click\" && av[2] === session && av[3] === btnSel) { clicked = true; }\n    if (sub === \"snapshot\" && av[2] === session && rec.data) {\n      elements = snap(rec.data);\n      if (rec.call_id) hostCall = rec.call_id;\n      anySnapshot = true;\n      if (clicked) postClickSnapshot = true;\n    }\n  }\n\n  if (clicked && postClickSnapshot && elements) {\n    var done = reportFor(elements, hostCall);\n    if (done) return done;\n  }\n\n  if (!opened) {\n    var o = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"open\", args.url, \"--session\", session])}, read: false, step: \"open\", occurrence: 0});\n    if (o && o.is_error) return {defer: \"open failed: \" + (o.text || \"unknown\")};\n  }\n\n  if (!anySnapshot) {\n    var s1 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s1 && s1.call_id) hostCall = s1.call_id;\n    elements = snap(s1 && s1.data);\n  }\n\n  if (!filled) {\n    var f = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"fill\", session, inSel, term])}, read: false, step: \"fill\", occurrence: 0});\n    if (f && f.is_error) return {defer: \"fill failed: \" + (f.text || \"unknown\")};\n  }\n\n  if (!clicked) {\n    var c = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"click\", session, btnSel])}, read: false, step: \"click\", occurrence: 0});\n    if (c && c.is_error) return {defer: \"click failed: \" + (c.text || \"unknown\")};\n  }\n\n  if (!postClickSnapshot) {\n    var s2 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s2 && s2.call_id) hostCall = s2.call_id;\n    var e2 = snap(s2 && s2.data);\n    var p2 = reportFor(e2, hostCall);\n    if (p2) return p2;\n  }\n  return {defer: \"receipt not yet visible after submit\"};\n}",
+            "claimIds": [
+              "74b2ea2e544edc0f5"
+            ],
+            "contracts": {
+              "command:playwright": "6a0b9da4a4cd5c8b6dce0937b4f0061c196ecfa2f4ab237cca4f3dd65743489a",
+              "helpers": "98aa22757269c3f695b8e3254b3cba7af0f196d29e5e05db58821ec7e43533db",
+              "tool:bash": "e7d02305dd76236efcf891511cbf7be63b6ecfaacc0a9421a045d009a93a271a"
+            },
+            "apiVersion": 2,
+            "qualificationJson": "{\"format\":\"native-mechanism/1\",\"source_hash\":\"27f1db9ca6bb17274cd3c96ac01155110badea677d37c1c18747a6f3a2cf5218\",\"contracts\":{\"playwright\":\"1\"},\"checks\":[\"syntax\",\"parameters\",\"manifest\",\"native_contracts\",\"finite_branches\",\"recorded_replay\",\"entry_report\"],\"trajectory_hash\":\"e3d4637c3bfd2b7450ded5d7a04482212fffaf3c8c18e527563b220e30137e38\",\"replayed\":1,\"coverage_gaps\":[\"Synthetic replay coverage gap.\"]}",
+            "manifestJson": "{\"parameters_schema\":null,\"steps\":{}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0690",
+      "emittedAt": "2000-01-01T00:03:15Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "17",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "5c645f52678a50edbe494dce91b9bad26b0f02fa0ff0c296468a901115aa9732",
+        "libraryChange": {
+          "state": "settled"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0692",
+      "emittedAt": "2000-01-01T00:03:16Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "18",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0691",
+          "purpose": "jev_claim",
+          "questions": {
+            "claim0": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"74b2ea2e544edc0f5\":\"Synthetic fixture value 314\",\"defer\":\"Synthetic fixture value 315\",\"new\":\"Synthetic fixture value 316\",\"synthetic-identity-0273\":\"Synthetic fixture value 317\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0693",
+      "emittedAt": "2000-01-01T00:03:17Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "19",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0691",
+          "purpose": "jev_claim",
+          "answers": {
+            "claim0": {
+              "type": "choice",
+              "choice": "74b2ea2e544edc0f5"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0694",
+      "emittedAt": "2000-01-01T00:03:18Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "20",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "claimId": "74b2ea2e544edc0f5",
+        "libraryChange": {
+          "state": "compiling"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0695",
+      "emittedAt": "2000-01-01T00:03:19Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "21",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "claimId": "74b2ea2e544edc0f5",
+        "libraryChange": {
+          "state": "deferred"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0696",
+      "emittedAt": "2000-01-01T00:03:19Z",
+      "sessionId": "synthetic-identity-0272",
+      "turnId": "synthetic-identity-1151",
+      "emitter": "jev",
+      "seq": "22",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "b496b7bc162eb729eab7284bb2104dc790b7c217160ddab561cf2175ddd02f06",
+        "background": true,
+        "boundaryId": "2a736e5a062c26a0b4252d56f6071644c407ef9b4486e1522eefebcbb2707e7e",
+        "libraryChange": {
+          "state": "settled"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0697",
+      "emittedAt": "2000-01-01T00:03:20Z",
+      "sessionId": "synthetic-identity-0270",
+      "emitter": "synthetic-identity-0178",
+      "seq": "1",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.chat.SessionHistory",
+          "mode": "MODE_INHERIT"
+        }
+      ],
+      "sessionStarted": {
+        "model": "fixture"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0698",
+      "emittedAt": "2000-01-01T00:03:20Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "2",
+      "turnStarted": {}
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0699",
+      "emittedAt": "2000-01-01T00:03:21Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "3",
+      "message": {
+        "id": "synthetic-identity-0263",
+        "role": "user",
+        "content": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0702",
+      "emittedAt": "2000-01-01T00:03:22Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0701",
+          "purpose": "jev_execution",
+          "questions": {
+            "entry": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"defer\":\"Synthetic fixture value 319\",\"synthetic-identity-0273\":\"Synthetic fixture value 320\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0703",
+      "emittedAt": "2000-01-01T00:03:23Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "2",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0701",
+          "purpose": "jev_execution",
+          "answers": {
+            "entry": {
+              "type": "choice",
+              "choice": "synthetic-identity-0273"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0704",
+      "emittedAt": "2000-01-01T00:03:24Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "3",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "reflexId": "synthetic-identity-0273",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "takeover": {
+          "definition": {
+            "id": "synthetic-identity-0273",
+            "when": "Synthetic fixture when 321",
+            "decide": "Use the synthetic fixture inputs and defer when they are absent.",
+            "observe": "js:function(context, args) {\n  args = args || {};\n  var missing = [];\n  if (!args.url) missing.push(\"url\");\n  if (!args.session) missing.push(\"session\");\n  if (!args.term) missing.push(\"term\");\n  if (!args.input_selector) missing.push(\"input_selector\");\n  if (!args.submit_selector) missing.push(\"submit_selector\");\n  if (missing.length) return {defer: \"missing current arguments\", parameters: \"url, session, term, input_selector, submit_selector\"};\n  var session = args.session;\n  var term = String(args.term);\n  var inSel = String(args.input_selector);\n  var btnSel = String(args.submit_selector);\n  var prefix = (args.receipt_prefix == null) ? \"Receipt: \" : String(args.receipt_prefix);\n\n  function snap(data) {\n    if (!data || !data.elements) return null;\n    return data.elements;\n  }\n  function findIdx(elements) {\n    if (!elements) return -1;\n    for (var i = 0; i < elements.length; i++) {\n      var t = elements[i].text;\n      if (t && t.indexOf(prefix) === 0) return i;\n    }\n    return -1;\n  }\n  function reportFor(elements, hostCall) {\n    var idx = findIdx(elements);\n    if (idx < 0) return null;\n    return {report: {evidence: hostCall, path: [\"data\", \"elements\", idx, \"text\"]}};\n  }\n\n  var hostCall = null;\n  var elements = null;\n  var opened = false;\n  var filled = false;\n  var clicked = false;\n  var anySnapshot = false;\n  var postClickSnapshot = false;\n\n  var hist = context.history || [];\n  for (var h = 0; h < hist.length; h++) {\n    var rec = hist[h];\n    if (rec.name !== \"bash\") continue;\n    var av = (rec.decoded_argv || []).slice();\n    if (av[0] !== \"playwright\") continue;\n    var sub = av[1];\n    if (sub === \"open\" && av[2] === args.url && av.indexOf(\"--session\") >= 0) { opened = true; }\n    if (sub === \"fill\" && av[2] === session && av[3] === inSel && av[4] === term) { filled = true; }\n    if (sub === \"click\" && av[2] === session && av[3] === btnSel) { clicked = true; }\n    if (sub === \"snapshot\" && av[2] === session && rec.data) {\n      elements = snap(rec.data);\n      if (rec.call_id) hostCall = rec.call_id;\n      anySnapshot = true;\n      if (clicked) postClickSnapshot = true;\n    }\n  }\n\n  if (clicked && postClickSnapshot && elements) {\n    var done = reportFor(elements, hostCall);\n    if (done) return done;\n  }\n\n  if (!opened) {\n    var o = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"open\", args.url, \"--session\", session])}, read: false, step: \"open\", occurrence: 0});\n    if (o && o.is_error) return {defer: \"open failed: \" + (o.text || \"unknown\")};\n  }\n\n  if (!anySnapshot) {\n    var s1 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s1 && s1.call_id) hostCall = s1.call_id;\n    elements = snap(s1 && s1.data);\n  }\n\n  if (!filled) {\n    var f = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"fill\", session, inSel, term])}, read: false, step: \"fill\", occurrence: 0});\n    if (f && f.is_error) return {defer: \"fill failed: \" + (f.text || \"unknown\")};\n  }\n\n  if (!clicked) {\n    var c = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"click\", session, btnSel])}, read: false, step: \"click\", occurrence: 0});\n    if (c && c.is_error) return {defer: \"click failed: \" + (c.text || \"unknown\")};\n  }\n\n  if (!postClickSnapshot) {\n    var s2 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s2 && s2.call_id) hostCall = s2.call_id;\n    var e2 = snap(s2 && s2.data);\n    var p2 = reportFor(e2, hostCall);\n    if (p2) return p2;\n  }\n  return {defer: \"receipt not yet visible after submit\"};\n}",
+            "claimIds": [
+              "74b2ea2e544edc0f5"
+            ],
+            "contracts": {
+              "command:playwright": "6a0b9da4a4cd5c8b6dce0937b4f0061c196ecfa2f4ab237cca4f3dd65743489a",
+              "helpers": "98aa22757269c3f695b8e3254b3cba7af0f196d29e5e05db58821ec7e43533db",
+              "tool:bash": "e7d02305dd76236efcf891511cbf7be63b6ecfaacc0a9421a045d009a93a271a"
+            },
+            "apiVersion": 2,
+            "qualificationJson": "{\"format\":\"native-mechanism/1\",\"source_hash\":\"27f1db9ca6bb17274cd3c96ac01155110badea677d37c1c18747a6f3a2cf5218\",\"contracts\":{\"playwright\":\"1\"},\"checks\":[\"syntax\",\"parameters\",\"manifest\",\"native_contracts\",\"finite_branches\",\"recorded_replay\",\"entry_report\"],\"trajectory_hash\":\"e3d4637c3bfd2b7450ded5d7a04482212fffaf3c8c18e527563b220e30137e38\",\"replayed\":1,\"coverage_gaps\":[\"Synthetic replay coverage gap.\"]}",
+            "manifestJson": "{\"parameters_schema\":null,\"steps\":{}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0706",
+      "emittedAt": "2000-01-01T00:03:25Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "4",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 2,
+        "reflexId": "synthetic-identity-0273",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0705",
+          "purpose": "jev_binding",
+          "questions": {
+            "binding": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"accept\":\"Synthetic fixture value 322\",\"defer\":\"Synthetic fixture value 323\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0707",
+      "emittedAt": "2000-01-01T00:03:26Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "5",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 2,
+        "reflexId": "synthetic-identity-0273",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0705",
+          "purpose": "jev_binding",
+          "answers": {
+            "binding": {
+              "type": "choice",
+              "choice": "accept"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0709",
+      "emittedAt": "2000-01-01T00:03:27Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "6",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 3,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "dispatch": {
+          "call": {
+            "id": "synthetic-identity-0708",
+            "name": "bash",
+            "arguments": {
+              "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzZXNzaW9ucyJ9",
+              "mediaType": "application/json"
+            }
+          },
+          "candidateId": "synthetic-identity-0274",
+          "read": true,
+          "effectId": "99da3b1ef7af95a57046dba80bb376227dc4221276ef9c42916ae173e05237f2"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0711",
+      "emittedAt": "2000-01-01T00:03:27Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "7",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0710",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "tool",
+        "name": "bash"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0713",
+      "emittedAt": "2000-01-01T00:03:28Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "8",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0712",
+          "parentOperationId": "synthetic-identity-0710",
+          "resourceId": "synthetic-identity-0212",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "process",
+        "name": "playwright sessions"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0715",
+      "emittedAt": "2000-01-01T00:03:29Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "9",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0714",
+          "parentOperationId": "synthetic-identity-0712",
+          "resourceId": "synthetic-identity-0212",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Started",
+        "kind": "command",
+        "name": "playwright"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0716",
+      "emittedAt": "2000-01-01T00:03:30Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "10",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0714",
+          "parentOperationId": "synthetic-identity-0712",
+          "resourceId": "synthetic-identity-0212",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "command",
+        "name": "playwright",
+        "startedAt": "2000-01-01T00:03:29Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0717",
+      "emittedAt": "2000-01-01T00:03:31Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "11",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0710",
+          "correlation": "CORRELATION_EXPLICIT"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "tool",
+        "name": "bash",
+        "startedAt": "2000-01-01T00:03:27Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0718",
+      "emittedAt": "2000-01-01T00:03:31Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "12",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 3,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "result": {
+          "result": {
+            "callId": "synthetic-identity-0708",
+            "output": [
+              {
+                "text": {
+                  "text": "Receipt: synthetic-receipt"
+                }
+              }
+            ],
+            "name": "bash",
+            "durationMs": "50"
+          },
+          "elapsedMs": "50"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0719",
+      "emittedAt": "2000-01-01T00:03:32Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "13",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/aop.operation.Ref",
+          "callId": "synthetic-identity-0708",
+          "operationId": "synthetic-identity-0712",
+          "parentOperationId": "synthetic-identity-0710",
+          "resourceId": "synthetic-identity-0212",
+          "correlation": "CORRELATION_EXPLICIT"
+        },
+        {
+          "@type": "type.googleapis.com/aop.pty.Session",
+          "id": "synthetic-identity-0212",
+          "kind": "builtin",
+          "name": "playwright",
+          "command": "printf synthetic-fixture",
+          "startedAt": "2000-01-01T00:03:28Z",
+          "lastActivityAt": "2000-01-01T00:03:30Z",
+          "endedAt": "2000-01-01T00:03:30Z",
+          "activitySeq": "4",
+          "outputBytes": "50",
+          "state": "completed",
+          "shape": "func"
+        }
+      ],
+      "extension": {
+        "@type": "type.googleapis.com/aop.operation.Completed",
+        "kind": "process",
+        "name": "playwright sessions",
+        "startedAt": "2000-01-01T00:03:28Z"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0721",
+      "emittedAt": "2000-01-01T00:03:33Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "14",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 4,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionRequest": {
+          "requestId": "synthetic-identity-0720",
+          "purpose": "jev_completion",
+          "questions": {
+            "completion": {
+              "type": "choice",
+              "instructionsJson": "\"\\\"Synthetic fixture instruction.\\\"\"",
+              "criteriaJson": "{\"accept\":\"Synthetic fixture value 326\",\"defer\":\"Synthetic fixture value 327\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0722",
+      "emittedAt": "2000-01-01T00:03:34Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "15",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 4,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "decisionResult": {
+          "requestId": "synthetic-identity-0720",
+          "purpose": "jev_completion",
+          "answers": {
+            "completion": {
+              "type": "choice",
+              "choice": "accept"
+            }
+          },
+          "elapsedMs": "50",
+          "usage": {
+            "inputTokens": "1000",
+            "outputTokens": "200",
+            "totalTokens": "1200",
+            "detail": {
+              "requests": "1",
+              "usage_missing": "0"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0723",
+      "emittedAt": "2000-01-01T00:03:35Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "16",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 4,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "observation": {
+          "stateJson": "{\"synthetic\":true}"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0724",
+      "emittedAt": "2000-01-01T00:03:35Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "jev",
+      "seq": "17",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+        "taskId": "4c02a5d8d74f25d6ceb16e6557f9255606e1d6d4e7139688e2e084eaf67a7df6",
+        "segmentId": "synthetic-identity-0700",
+        "step": 4,
+        "reflexId": "synthetic-identity-0273",
+        "callId": "synthetic-identity-0708",
+        "boundaryId": "7e0e4dcf05fb1d21d2022a56d8d6691ac5d373edde731785bf5d458f2744ce93",
+        "handoff": {
+          "reason": "report",
+          "code": "report",
+          "detail": "Synthetic fixture feedback.",
+          "effectsJson": "{}",
+          "resultJson": "{\"report\":\"Receipt: synthetic-receipt\"}"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0725",
+      "emittedAt": "2000-01-01T00:03:36Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "4",
+      "message": {
+        "id": "synthetic-identity-0264",
+        "role": "user",
+        "name": "jev",
+        "content": [
+          {
+            "text": {
+              "text": "Receipt: synthetic-receipt"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0726",
+      "emittedAt": "2000-01-01T00:03:37Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "5",
+      "extensions": [
+        {
+          "@type": "type.googleapis.com/cyber.agent.LLMRequestDetail",
+          "model": "fixture",
+          "messages": 3,
+          "maxTokens": 1024,
+          "stream": true
+        }
+      ],
+      "status": {
+        "state": "llm_request"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0727",
+      "emittedAt": "2000-01-01T00:03:37Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "6",
+      "messageDelta": {
+        "messageId": "synthetic-identity-0265",
+        "operation": "DELTA_OPERATION_APPEND",
+        "text": "Current sessions verified from native evidence."
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0728",
+      "emittedAt": "2000-01-01T00:03:37Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "7",
+      "message": {
+        "id": "synthetic-identity-0265",
+        "role": "assistant",
+        "content": [
+          {
+            "text": {
+              "text": "Current sessions verified from native evidence."
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0729",
+      "emittedAt": "2000-01-01T00:03:38Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "8",
+      "usage": {
+        "inputTokens": "1000",
+        "outputTokens": "200",
+        "totalTokens": "1200",
+        "model": "fixture",
+        "detail": {
+          "context_tokens": "1000",
+          "requests": "1"
+        }
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0730",
+      "emittedAt": "2000-01-01T00:03:39Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0178",
+      "seq": "9",
+      "turnEnded": {
+        "stopReason": "completed",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1"
+          }
+        },
+        "contextTokens": "1000"
+      }
+    }
+  },
+  {
+    "event": {
+      "id": "synthetic-identity-0731",
+      "emittedAt": "2000-01-01T00:03:40Z",
+      "sessionId": "synthetic-identity-0270",
+      "turnId": "synthetic-identity-1152",
+      "emitter": "synthetic-identity-0297",
+      "seq": "1",
+      "extension": {
+        "@type": "type.googleapis.com/cyber.agent.Recap",
+        "text": "Synthetic fixture text 330"
+      }
+    }
+  }
+]
