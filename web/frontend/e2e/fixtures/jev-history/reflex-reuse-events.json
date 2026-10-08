@@ -1,0 +1,992 @@
+[
+  {
+    "id": "synthetic-identity-0831",
+    "emittedAt": "2000-01-01T00:04:44Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "1",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0830",
+        "purpose": "jev_execution",
+        "claims": {
+          "entry": {
+            "type": "choice",
+            "context": "Synthetic fixture value 601",
+            "options": [
+              "defer",
+              "synthetic-reflex-created"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0832",
+    "emittedAt": "2000-01-01T00:04:45Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "2",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0830",
+        "purpose": "jev_execution",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "entry": {
+            "choice": "synthetic-reflex-created",
+            "probabilities": {
+              "defer": 0.5,
+              "synthetic-reflex-created": 0.5
+            },
+            "confidence": 0.98
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0833",
+    "emittedAt": "2000-01-01T00:04:46Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "3",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "takeover": {
+        "definition": {
+          "id": "synthetic-reflex-created",
+          "when": "Synthetic fixture when 602",
+          "decide": "Use the synthetic fixture inputs and defer when they are absent.",
+          "observe": "js:function(context, args) {\n  args = args || {};\n  var missing = [];\n  if (!args.url) missing.push(\"url\");\n  if (!args.session) missing.push(\"session\");\n  if (!args.term) missing.push(\"term\");\n  if (!args.input_selector) missing.push(\"input_selector\");\n  if (!args.submit_selector) missing.push(\"submit_selector\");\n  if (missing.length) return {defer: \"missing current arguments\", parameters: \"url, session, term, input_selector, submit_selector\"};\n  var session = args.session;\n  var term = String(args.term);\n  var inSel = String(args.input_selector);\n  var btnSel = String(args.submit_selector);\n  var prefix = (args.receipt_prefix == null) ? \"Receipt: \" : String(args.receipt_prefix);\n\n  function snap(data) {\n    if (!data || !data.elements) return null;\n    return data.elements;\n  }\n  function findIdx(elements) {\n    if (!elements) return -1;\n    for (var i = 0; i < elements.length; i++) {\n      var t = elements[i].text;\n      if (t && t.indexOf(prefix) === 0) return i;\n    }\n    return -1;\n  }\n  function reportFor(elements, hostCall) {\n    var idx = findIdx(elements);\n    if (idx < 0) return null;\n    return {report: {evidence: hostCall, path: [\"data\", \"elements\", idx, \"text\"]}};\n  }\n\n  var hostCall = null;\n  var elements = null;\n  var opened = false;\n  var filled = false;\n  var clicked = false;\n  var anySnapshot = false;\n  var postClickSnapshot = false;\n\n  var hist = context.history || [];\n  for (var h = 0; h < hist.length; h++) {\n    var rec = hist[h];\n    if (rec.name !== \"bash\") continue;\n    var av = (rec.decoded_argv || []).slice();\n    if (av[0] !== \"playwright\") continue;\n    var sub = av[1];\n    if (sub === \"open\" && av[2] === args.url && av.indexOf(\"--session\") >= 0) { opened = true; }\n    if (sub === \"fill\" && av[2] === session && av[3] === inSel && av[4] === term) { filled = true; }\n    if (sub === \"click\" && av[2] === session && av[3] === btnSel) { clicked = true; }\n    if (sub === \"snapshot\" && av[2] === session && rec.data) {\n      elements = snap(rec.data);\n      if (rec.call_id) hostCall = rec.call_id;\n      anySnapshot = true;\n      if (clicked) postClickSnapshot = true;\n    }\n  }\n\n  if (clicked && postClickSnapshot && elements) {\n    var done = reportFor(elements, hostCall);\n    if (done) return done;\n  }\n\n  if (!opened) {\n    var o = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"open\", args.url, \"--session\", session])}, read: false, step: \"open\", occurrence: 0});\n    if (o && o.is_error) return {defer: \"open failed: \" + (o.text || \"unknown\")};\n  }\n\n  if (!anySnapshot) {\n    var s1 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s1 && s1.call_id) hostCall = s1.call_id;\n    elements = snap(s1 && s1.data);\n  }\n\n  if (!filled) {\n    var f = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"fill\", session, inSel, term])}, read: false, step: \"fill\", occurrence: 0});\n    if (f && f.is_error) return {defer: \"fill failed: \" + (f.text || \"unknown\")};\n  }\n\n  if (!clicked) {\n    var c = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"click\", session, btnSel])}, read: false, step: \"click\", occurrence: 0});\n    if (c && c.is_error) return {defer: \"click failed: \" + (c.text || \"unknown\")};\n  }\n\n  if (!postClickSnapshot) {\n    var s2 = execute({name: \"bash\", arguments: {command: command(\"playwright\", [\"snapshot\", session, \"--json\"])}, read: true});\n    if (s2 && s2.call_id) hostCall = s2.call_id;\n    var e2 = snap(s2 && s2.data);\n    var p2 = reportFor(e2, hostCall);\n    if (p2) return p2;\n  }\n  return {defer: \"receipt not yet visible after submit\"};\n}",
+          "claimIds": [
+            "2bf075f476ab3ee95",
+            "2e4e6c362fdd20da9",
+            "e7ae7fb2bc9052069",
+            "085d54c514e6caccd"
+          ],
+          "contracts": {
+            "command:playwright": "6a0b9da4a4cd5c8b6dce0937b4f0061c196ecfa2f4ab237cca4f3dd65743489a",
+            "helpers": "98aa22757269c3f695b8e3254b3cba7af0f196d29e5e05db58821ec7e43533db",
+            "tool:bash": "e7d02305dd76236efcf891511cbf7be63b6ecfaacc0a9421a045d009a93a271a"
+          },
+          "apiVersion": 2,
+          "qualificationJson": "{\"format\":\"native-mechanism/1\",\"source_hash\":\"e46af3fa44bc818400becb939212807ed2a1285c8b3ba10d9b5eaaca943376ec\",\"contracts\":{\"playwright\":\"1\"},\"checks\":[\"syntax\",\"parameters\",\"manifest\",\"native_contracts\",\"finite_branches\",\"recorded_replay\",\"entry_report\"],\"trajectory_hash\":\"304f31107a3ea7ac3f0a14620c8e41daa8aeba8ef51a1216142acbe46b0d40ed\",\"replayed\":15}",
+          "manifestJson": "{\"parameters_schema\":{\"properties\":{\"input_selector\":{\"type\":\"string\"},\"receipt_prefix\":{\"type\":\"string\"},\"session\":{\"type\":\"string\"},\"submit_selector\":{\"type\":\"string\"},\"term\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"required\":[\"url\",\"session\",\"term\",\"input_selector\",\"submit_selector\"],\"type\":\"object\"},\"steps\":{\"click\":{\"contract\":\"playwright\",\"count\":1},\"fill\":{\"contract\":\"playwright\",\"count\":1},\"open\":{\"contract\":\"playwright\",\"count\":1}}}"
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0835",
+    "emittedAt": "2000-01-01T00:04:47Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "4",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "generation": {
+        "kind": "parameters_llm",
+        "state": "started",
+        "requestId": "synthetic-identity-0834",
+        "attempt": 1
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0836",
+    "emittedAt": "2000-01-01T00:04:48Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "5",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "generation": {
+        "kind": "parameters_llm",
+        "state": "finished",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "cache_miss": "1000",
+            "cache_read": "1000",
+            "cache_write": "1000",
+            "reasoning": "50"
+          }
+        },
+        "requestId": "synthetic-identity-0834"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0838",
+    "emittedAt": "2000-01-01T00:04:49Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "6",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 2,
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0837",
+        "purpose": "jev_input",
+        "claims": {
+          "input": {
+            "type": "choice",
+            "context": "Synthetic fixture value 603",
+            "options": [
+              "Synthetic fixture value 604",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0839",
+    "emittedAt": "2000-01-01T00:04:50Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "7",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 2,
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0837",
+        "purpose": "jev_input",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "input": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.72
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0841",
+    "emittedAt": "2000-01-01T00:04:51Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "8",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 3,
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0840",
+        "purpose": "jev_binding",
+        "claims": {
+          "binding": {
+            "type": "choice",
+            "context": "Synthetic fixture value 605",
+            "options": [
+              "Synthetic fixture value 606",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0842",
+    "emittedAt": "2000-01-01T00:04:52Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "9",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 3,
+      "reflexId": "synthetic-reflex-created",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0840",
+        "purpose": "jev_binding",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "binding": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.96
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0844",
+    "emittedAt": "2000-01-01T00:04:53Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "10",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 4,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0843",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "dispatch": {
+        "call": {
+          "id": "synthetic-identity-0843",
+          "name": "bash",
+          "arguments": {
+            "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBvcGVuIGh0dHBzOi8vZml4dHVyZS5leGFtcGxlIC0tc2Vzc2lvbiBzeW50aGV0aWMtYnJvd3NlciJ9",
+            "mediaType": "application/json"
+          }
+        },
+        "candidateId": "synthetic-identity-0284",
+        "effectId": "a38fec9cdfc7b03b2e295ab6e9d3130bd09bb4d610f4e0d3e3fab9eb4b78a82e",
+        "stepId": "open"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0845",
+    "emittedAt": "2000-01-01T00:04:54Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "11",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 4,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0843",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "result": {
+        "result": {
+          "callId": "synthetic-identity-0843",
+          "output": [
+            {
+              "text": {
+                "text": "Receipt: synthetic-receipt"
+              }
+            }
+          ],
+          "name": "bash",
+          "durationMs": "50"
+        },
+        "elapsedMs": "50"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0847",
+    "emittedAt": "2000-01-01T00:04:55Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "12",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 5,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0843",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0846",
+        "purpose": "jev_binding",
+        "claims": {
+          "binding": {
+            "type": "choice",
+            "context": "Synthetic fixture value 608",
+            "options": [
+              "Synthetic fixture value 609",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0848",
+    "emittedAt": "2000-01-01T00:04:56Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "13",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 5,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0843",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0846",
+        "purpose": "jev_binding",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "binding": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.98
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0850",
+    "emittedAt": "2000-01-01T00:04:57Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "14",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 6,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0849",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "dispatch": {
+        "call": {
+          "id": "synthetic-identity-0849",
+          "name": "bash",
+          "arguments": {
+            "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzbmFwc2hvdCBzeW50aGV0aWMtYnJvd3NlciAtLWpzb24ifQ==",
+            "mediaType": "application/json"
+          }
+        },
+        "candidateId": "synthetic-identity-0285",
+        "read": true,
+        "effectId": "55a6381427b8c8a43dffb87ba6ee7e8f7f9e2317ac51dc8c87bd335b5863227c"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0851",
+    "emittedAt": "2000-01-01T00:04:58Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "15",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 6,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0849",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "result": {
+        "result": {
+          "callId": "synthetic-identity-0849",
+          "output": [
+            {
+              "text": {
+                "text": "Receipt: synthetic-receipt"
+              }
+            }
+          ],
+          "name": "bash",
+          "durationMs": "50"
+        },
+        "elapsedMs": "50"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0853",
+    "emittedAt": "2000-01-01T00:04:59Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "16",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 7,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0849",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0852",
+        "purpose": "jev_binding",
+        "claims": {
+          "binding": {
+            "type": "choice",
+            "context": "Synthetic fixture value 611",
+            "options": [
+              "Synthetic fixture value 612",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0854",
+    "emittedAt": "2000-01-01T00:05:00Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "17",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 7,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0849",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0852",
+        "purpose": "jev_binding",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "binding": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.96
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0856",
+    "emittedAt": "2000-01-01T00:05:01Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "18",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 8,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0855",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "dispatch": {
+        "call": {
+          "id": "synthetic-identity-0855",
+          "name": "bash",
+          "arguments": {
+            "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBmaWxsIHN5bnRoZXRpYy1icm93c2VyIGlucHV0IHN5bnRoZXRpYy10ZXJtIn0=",
+            "mediaType": "application/json"
+          }
+        },
+        "candidateId": "synthetic-identity-0286",
+        "effectId": "8d6da70918f7d7c85f7b2c0f6ff4a41ae217154247d3a164c568fb2637e379f7",
+        "stepId": "fill"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0857",
+    "emittedAt": "2000-01-01T00:05:02Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "19",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 8,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0855",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "result": {
+        "result": {
+          "callId": "synthetic-identity-0855",
+          "output": [
+            {
+              "text": {
+                "text": "Receipt: synthetic-receipt"
+              }
+            }
+          ],
+          "name": "bash",
+          "durationMs": "50"
+        },
+        "elapsedMs": "50"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0859",
+    "emittedAt": "2000-01-01T00:05:03Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "20",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 9,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0855",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0858",
+        "purpose": "jev_binding",
+        "claims": {
+          "binding": {
+            "type": "choice",
+            "context": "Synthetic fixture value 614",
+            "options": [
+              "Synthetic fixture value 615",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0860",
+    "emittedAt": "2000-01-01T00:05:04Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "21",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 9,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0855",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0858",
+        "purpose": "jev_binding",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "binding": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.96
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0862",
+    "emittedAt": "2000-01-01T00:05:05Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "22",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 10,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0861",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "dispatch": {
+        "call": {
+          "id": "synthetic-identity-0861",
+          "name": "bash",
+          "arguments": {
+            "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBjbGljayBzeW50aGV0aWMtYnJvd3NlciBidXR0b24ifQ==",
+            "mediaType": "application/json"
+          }
+        },
+        "candidateId": "synthetic-identity-0287",
+        "effectId": "a8ab9152f1d4841296a39e0f08bb2d4629d06f49262097b70a7dfa594222b86c",
+        "stepId": "click"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0863",
+    "emittedAt": "2000-01-01T00:05:06Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "23",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 10,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0861",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "result": {
+        "result": {
+          "callId": "synthetic-identity-0861",
+          "output": [
+            {
+              "text": {
+                "text": "Receipt: synthetic-receipt"
+              }
+            }
+          ],
+          "name": "bash",
+          "durationMs": "50"
+        },
+        "elapsedMs": "50"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0865",
+    "emittedAt": "2000-01-01T00:05:07Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "24",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 11,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0861",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0864",
+        "purpose": "jev_binding",
+        "claims": {
+          "binding": {
+            "type": "choice",
+            "context": "Synthetic fixture value 617",
+            "options": [
+              "Synthetic fixture value 618",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0866",
+    "emittedAt": "2000-01-01T00:05:08Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "25",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 11,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0861",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0864",
+        "purpose": "jev_binding",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "binding": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.96
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0868",
+    "emittedAt": "2000-01-01T00:05:09Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "26",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 12,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0867",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "dispatch": {
+        "call": {
+          "id": "synthetic-identity-0867",
+          "name": "bash",
+          "arguments": {
+            "data": "eyJjb21tYW5kIjoicGxheXdyaWdodCBzbmFwc2hvdCBzeW50aGV0aWMtYnJvd3NlciAtLWpzb24ifQ==",
+            "mediaType": "application/json"
+          }
+        },
+        "candidateId": "synthetic-identity-0288",
+        "read": true,
+        "effectId": "55a6381427b8c8a43dffb87ba6ee7e8f7f9e2317ac51dc8c87bd335b5863227c"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0869",
+    "emittedAt": "2000-01-01T00:05:10Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "27",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 12,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0867",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "result": {
+        "result": {
+          "callId": "synthetic-identity-0867",
+          "output": [
+            {
+              "text": {
+                "text": "Receipt: synthetic-receipt"
+              }
+            }
+          ],
+          "name": "bash",
+          "durationMs": "50"
+        },
+        "elapsedMs": "50"
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0871",
+    "emittedAt": "2000-01-01T00:05:11Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "28",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 13,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0867",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionRequest": {
+        "requestId": "synthetic-identity-0870",
+        "purpose": "jev_completion",
+        "claims": {
+          "completion": {
+            "type": "choice",
+            "context": "Synthetic fixture value 620",
+            "options": [
+              "Synthetic fixture value 621",
+              "defer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0872",
+    "emittedAt": "2000-01-01T00:05:12Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "29",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 13,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0867",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "decisionResult": {
+        "requestId": "synthetic-identity-0870",
+        "purpose": "jev_completion",
+        "elapsedMs": "50",
+        "usage": {
+          "inputTokens": "1000",
+          "outputTokens": "200",
+          "totalTokens": "1200",
+          "detail": {
+            "requests": "1",
+            "usage_missing": "0"
+          }
+        },
+        "evaluations": {
+          "completion": {
+            "choice": "accept",
+            "probabilities": {
+              "accept": 0.5,
+              "defer": 0.5
+            },
+            "confidence": 0.96
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "synthetic-identity-0873",
+    "emittedAt": "2000-01-01T00:05:13Z",
+    "sessionId": "synthetic-identity-0253",
+    "turnId": "synthetic-identity-0299",
+    "emitter": "jev",
+    "seq": "30",
+    "extension": {
+      "@type": "type.googleapis.com/cyber.jev.RuntimeEvent",
+      "taskId": "541bb0dd0c105a67cbc7c7ab97ee588bd35d4eab034a4a076f7431501a7b7538",
+      "segmentId": "synthetic-identity-0829",
+      "step": 13,
+      "reflexId": "synthetic-reflex-created",
+      "callId": "synthetic-identity-0867",
+      "boundaryId": "2d49bff255911d73270f126ac15a2a04f4a15538d1bb9b92f164c1e5f61bbd0b",
+      "handoff": {
+        "reason": "report",
+        "code": "report",
+        "detail": "Synthetic fixture feedback.",
+        "effectsJson": "{\"a8ab9152f1d4841296a39e0f08bb2d4629d06f49262097b70a7dfa594222b86c\":{\"occurrence\":0,\"state\":\"returned\",\"step\":\"click\"},\"a38fec9cdfc7b03b2e295ab6e9d3130bd09bb4d610f4e0d3e3fab9eb4b78a82e\":{\"occurrence\":0,\"state\":\"returned\",\"step\":\"open\"},\"8d6da70918f7d7c85f7b2c0f6ff4a41ae217154247d3a164c568fb2637e379f7\":{\"occurrence\":0,\"state\":\"returned\",\"step\":\"fill\"}}",
+        "resultJson": "{\"report\":\"Receipt: synthetic-receipt\"}"
+      }
+    }
+  }
+]
